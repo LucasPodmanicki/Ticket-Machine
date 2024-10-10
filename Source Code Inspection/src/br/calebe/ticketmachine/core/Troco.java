@@ -81,7 +81,9 @@ class Troco {
 
         @Override
         public void remove() {
-            next();
+            if (hasNext()) {
+                next();
+            }
         }
     }
 }
