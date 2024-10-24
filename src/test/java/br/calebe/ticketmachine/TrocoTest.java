@@ -24,4 +24,19 @@ public class TrocoTest {
         Iterator<PapelMoeda> iterator = troco.getIterator();
         assertFalse(iterator.hasNext());
     }
+
+    @Test
+    public void testTrocoComValorMenorQueCédula() {
+        Troco troco = new Troco(3);
+        Iterator<PapelMoeda> iterator = troco.getIterator();
+
+        // O único valor que deve ser retornado é 2
+        assertTrue(iterator.hasNext());
+        PapelMoeda moeda2 = iterator.next();
+        assertEquals(2, moeda2.getValor());
+        assertEquals(1, moeda2.getQuantidade());
+        
+        // Não deve haver mais cédulas
+        assertFalse(iterator.hasNext());
+    }
 }
